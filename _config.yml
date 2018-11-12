@@ -106,6 +106,8 @@ author:
   bio              : "Data Scientist"
   location         : "Chicago, IL"
   email            : "jysl9412"
+  linkedin         : "jason-washam"
+  github           : "jwasham12"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
@@ -125,6 +127,8 @@ author:
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
       # url: "https://instagram.com/"
+    - label: "linkedin"
+      icon: "fab fa-fw fa-linkedin"
 
 # Site Footer
 footer:
