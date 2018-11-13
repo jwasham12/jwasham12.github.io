@@ -5,8 +5,6 @@ tags: [data science]
 excerpt: "Data Science"
 ---
 
-# H1 Heading
-
 ## H2 Heading
 
 ### H3 Heading
