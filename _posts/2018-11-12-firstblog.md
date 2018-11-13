@@ -2,8 +2,6 @@
 title: "My First Blog"
 date: 2019-11-12
 tags: [data science]
-header:
-  image: "/images/data-pic.jpg"
 excerpt: "Data Science"
 ---
 
