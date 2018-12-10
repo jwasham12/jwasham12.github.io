@@ -1,10 +1,8 @@
 ---
 layout: archive
-permalink: /blog/
-title: "Blog"
+title: "Posts"
+permalink: /collection-archive/
 author_profile: true
-header:
-  image: "/images/data-pic.jpg"
 ---
 
 {% capture written_label %}'None'{% endcapture %}
