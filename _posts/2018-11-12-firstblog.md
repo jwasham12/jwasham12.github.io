@@ -1,13 +1,16 @@
 ---
-title: "My First Blog"
+title: "The Classic Hangman Game"
 date: 2019-11-12
-tags: [data science]
+tags: [Intro to Python] [Basic Game]
 excerpt: "Data Science"
 ---
 
-## H2 Heading
+## The Basics of Python
 
-### H3 Heading
+
+
+
+
 
 here's some basic text.
 
