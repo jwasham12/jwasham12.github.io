@@ -1,7 +1,7 @@
 ---
 layout: archive
-title: "Posts"
-permalink: /collection-archive/
+title: "Post"
+permalink: /post/
 author_profile: true
 ---
 
