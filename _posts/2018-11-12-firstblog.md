@@ -1,16 +1,11 @@
 ---
-title: "The Classic Hangman Game"
-date: 2019-11-12
+title: "Ames Iowa Housing Data"
+date: 2018-11-12
 tags: [Intro to Python] [Basic Game]
 excerpt: "Data Science"
 ---
 
 ## The Basics of Python
-
-
-
-
-
 
 here's some basic text.
 
