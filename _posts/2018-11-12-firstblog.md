@@ -1,6 +1,6 @@
 ---
 title: "Ames Iowa Housing Data"
-date: 2018-11-12
+date: 2018-12-10
 tags: [Intro to Python] [Basic Game]
 excerpt: "Data Science"
 ---
