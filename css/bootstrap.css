@@ -6754,4 +6754,7 @@ button.close {
     display: none !important;
   }
 }
+.card-deck{
+    bottom-margin: 10px;
+}
 /*# sourceMappingURL=bootstrap.css.map */
