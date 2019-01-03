@@ -63,7 +63,6 @@
                 <li><a>Python</a></li>
                 <li><a>Regression</a></li>
                 <li><a>Regularization</a></li>
-                <li><a>Feature Engineering</a></li>
             </ul>
             <header>
               <h2>Introduction</h2>
@@ -108,11 +107,59 @@
             <p style="text-align:center;"><img src="images/blog/blog1/corr.png" alt="blog-post-1" width="600" height="400"></p>
             <p>Another crucial step before modeling is to check the multicollinearity. Multicollinearity is a phenomenon in which one feature (predictor) can be linearly predicted from the other features. This can make the model unstable and difficult to interpret. The graph above shows some of the features with high correlation such as garage area and garage cars. These are the features that showed a high correlation:
               <ul>
-                <li>Coffee</li>
-                <li>Tea</li>
-                <li>Milk</li>
+                <li>Total Bsmt SF and 1st Flr SF</li>
+                <li>Pool Area and Pool QC</li>
+                <li>Fireplace and Fireplace Qu</li>
+                <li>Garage Yr Blt and Garage Qual</li>
+                <li>Garage Area and Garage Cars</li>
+                <li>Garage Qual and Garage Cond</li>
+              </ul>
+
+            In order to avoid multicollinearity, some of the features listed above are removed:
+              <ul>
+                <li>Fireplace Qu</li>
+                <li>Garage Cond</li>
+                <li>Garage Cars</li>
+                <li>Pool QC</li>
               </ul>
             </p>
+            <br>
+
+            <header>
+              <h2>Selecting Features (Regularization)</h2>
+            </header>
+            <p style="text-align:center;"><img src="images/blog/blog1/select.png" alt="blog-post-1" width="600" height="400"></p>
+            <p>Since the data have so many features, we want to remove features that do not help to predict the sale price of the house. Instead of checking each column and the correlation to the sale price, the Lasso regularization method should be used. Lasso (least absolute shrinkage and selection operator) is a regression analysis method that helps to reduce features. The graph above shows the difference between true house price and predicted house price (error) of the test model versus the number of the features. The optimal number of features is 75 with error of $43115.79.</p>
+
+            <p style="text-align:center;"><img src="images/blog/blog1/result.png" alt="blog-post-1" width="600" height="400"></p>
+            <p>Another method similar to Lasso regularization is the Elastic Net regularization is a regression method that linearly combines the lasso and ridge methods. The method with the lowest error was the Elastic Net method with 53 features.</p>
+            <br>
+
+            <header>
+              <h2>Final Model</h2>
+            </header>
+            <p style="text-align:center;"><img src="images/blog/blog1/table.png" alt="blog-post-1" width="600" height="400"></p>
+            <p>The best model to predict the sale price of the house in Ames, Iowa is the Elastic net model with 53 features such as the total area of the house, overall quality, and neighborhoods.</p>
+
+            <p> Features that help the sale price to increase (positive coefficient)
+              <ul>
+                <li>Gr Liv Area: above ground living area in square feet</li>
+                <li>Total Area: area of basement, 1st floor and 2nd floor in square feet</li>
+                <li>Neighborhood Crawfor: Crawford neighborhood in Ames, Iowa</li>
+                <li>Exterior 1st_BrkFace: Brick Face exterior covering on house</li>
+              </ul>
+            </p>
+
+            <p> Features that help the sale price to decrease (negative coefficient)
+              <ul>
+                <li>Roof Matl_ClyTile: Clay or tile roof material</li>
+                <li>Functional_Sal: Home functionality rating (salvage only)</li>
+                <li>Functional_Sev: Home functionality rating (severely damaged)</li>
+                <li>Neighborhood_Edwards: Edwards neighborhood in Ames, Iowa</li>
+              </ul>
+            </p>
+
+            <p>For more detail analysis and code, Check out my <a href="https://github.com/jwasham12">Github</a></p>
             <br>
 
             <div class="post-info">
