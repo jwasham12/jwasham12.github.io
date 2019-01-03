@@ -6757,4 +6757,4 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
-.row:before, .row:after {display: none !important;}
+.row:before, .row:after {display: flex !important;}
