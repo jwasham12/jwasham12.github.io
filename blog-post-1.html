@@ -79,10 +79,14 @@
             <header>
               <h2>Missing Data</h2>
             </header>
-            <p style="text-align:center;"><img src="images/blog/blog1/missing-value.png" alt="blog-post-1" width="500" height="400"></p>
+            <p style="text-align:center;"><img src="images/blog/blog1/missing-value.png" alt="blog-post-1" width="600" height="400"></p>
             <p>The first issue with the data is the missing values. The graph above shows the of the number of missing value in each column. When we look deeper into the columns with missing values, we can see that those values are not actually missing, but just cannot be measured or not applicable to be measured. For example, over 2000 missing values in the pool quality column can be replaced with NA (not applicable) if the corresponding pool area column show value of zero. This means that there is no pool in the house, so measuring the pool quality is not applicable. After looking into all of the missing values columns, I decided to replace the missing value in numeric columns to zero and NA (not applicable) to categorical columns.</p>
 
-            <p>Praesent ac quam sed magna gravida interdum. Vivamus sed nunc lobortis, tempor ante ut, gravida nibh. Praesent sed euismod odio. Maecenas dui dui, euismod quis lobortis quis, dignissim ut eros. Curabitur cursus lacinia sollicitudin. Aenean vitae erat imperdiet, egestas nisi non, placerat sapien. In nec commodo justo. Nunc posuere lacinia neque eu malesuada. Sed lacus lacus, tincidunt id faucibus eget, sagittis sed enim. Nunc nec dapibus odio.</p>
+            <header>
+              <h2>Data Cleaning</h2>
+            </header>
+            <p style="text-align:center;"><img src="images/blog/blog1/clean.png" alt="blog-post-1" width="600" height="400"></p>
+            <p>Since we wanted to use regression to predict the sale price of the house, the categorical columns need to be changed to numbers. One of the ways to change the values into numbers is to identify ordinal data. Ordinal data is a categorical data type where there is a clear ordering of the values. For example, basement quality is ordinal data which each category can be represented with numbers: Excellent (5), Good (4), Typical (3), Fair (2), Poor (1) and None (0). There are 19 ordinal data columns and 2 binary data columns. Binary columns such as central air conditioning can be represented as yes (1) or no (0).</p>
 
             <div class="post-info">
               <span class="autor"><i class="fa fa-fw fa-user"></i> Jason Washam</span>
