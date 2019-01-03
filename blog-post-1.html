@@ -98,8 +98,21 @@
             <p style="text-align:center;"><img src="images/blog/blog1/target.png" alt="blog-post-1"></p>
             <p>Analysis of the target variable (sale price) is a crucial step before building a model since any type of skewness will have a negative effect on the predictions. The graph above shows the distribution of the target variable where the shape of the distribution is skewed. The distribution is skewed to the left where median (green line) is less than the mean (red line). In order to fix this skewed distribution, log transformation is applied to the target variable.</p>
 
-            <p style="text-align:center;"><img src="images/blog/blog1/log-target.png" alt="blog-post-1"></p>
+            <p style="text-align:center;"><img src="images/blog/blog1/log-target-var.png" alt="blog-post-1"></p>
             <p>After the log transformation, we can see that the median (green line) shifted toward the mean (red line). This means that the distribution is now less skewed and closer to be normally distributed. Therefore, this transformation will reduce the negative effect on the predictions.</p>
+            <br>
+
+            <header>
+              <h2>Correlation</h2>
+            </header>
+            <p style="text-align:center;"><img src="images/blog/blog1/corr.png" alt="blog-post-1" width="600" height="400"></p>
+            <p>Another crucial step before modeling is to check the multicollinearity. Multicollinearity is a phenomenon in which one feature (predictor) can be linearly predicted from the other features. This can make the model unstable and difficult to interpret. The graph above shows some of the features with high correlation such as garage area and garage cars. These are the features that showed a high correlation:
+              <ul>
+                <li>Coffee</li>
+                <li>Tea</li>
+                <li>Milk</li>
+              </ul>
+            </p>
             <br>
 
             <div class="post-info">
