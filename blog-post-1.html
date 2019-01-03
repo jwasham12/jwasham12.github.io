@@ -69,18 +69,18 @@
               <h2>Introduction</h2>
             </header>
             <p>Buying a house can be very stressful especially when it comes down to the price of the house. Everyone expects a house for the right price, but how can you measure the value of the price without measuring every aspect of the house. It might be possible to calculate all of these things, but it can be very time consuming and tiring. This is where data science can be used to help to pick the right house for the right price. I obtained the housing dataset from Kaggle which include 79 explanatory variables describing (almost) every aspect of residential homes in Ames, Iowa. With data analytics and machine learning concept, this dataset can help us to see which house features have the negative or positive effect of the house price and build an accurate model that can predict the sale price.</p>
-            <br>
-            </br>
+
             <header>
               <h2>Importing the Data</h2>
             </header>
             <img src="images/blog/blog1/data-table.png" alt="blog-post-1">
             <p>This is the portion of data I obtain from Kaggle using the code. The Ames housing data contained 2050 rows and 81 columns. There were 39 numeric columns which contained information such as the year of the house built, garage area and pool area. Rest of 42 columns were categorical columns which contained information such as neighborhood, house style, and garage quality. From the picture above, the first issue of the data was the missing value in columns such as alley. The data also needs to convert the categorical columns into numeric in order to use the features in the regression.</p>
 
-            <blockquote>
-                <p>Vivamus volutpat auctor metus, venenatis ornare mi dictum sit amet. Aliquam erat volutpat.</p>
-                <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-            </blockquote>
+            <header>
+              <h2>Missing Data</h2>
+            </header>
+            <img src="images/blog/blog1/missing-value.png" alt="blog-post-1">
+            <p>The first issue with the data is the missing values. The graph above shows the of the number of missing value in each column. When we look deeper into the columns with missing values, we can see that those values are not actually missing, but just cannot be measured or not applicable to be measured. For example, over 2000 missing values in the pool quality column can be replaced with NA (not applicable) if the corresponding pool area column show value of zero. This means that there is no pool in the house, so measuring the pool quality is not applicable. After looking into all of the missing values columns, I decided to replace the missing value in numeric columns to zero and NA (not applicable) to categorical columns.</p>
 
             <p>Praesent ac quam sed magna gravida interdum. Vivamus sed nunc lobortis, tempor ante ut, gravida nibh. Praesent sed euismod odio. Maecenas dui dui, euismod quis lobortis quis, dignissim ut eros. Curabitur cursus lacinia sollicitudin. Aenean vitae erat imperdiet, egestas nisi non, placerat sapien. In nec commodo justo. Nunc posuere lacinia neque eu malesuada. Sed lacus lacus, tincidunt id faucibus eget, sagittis sed enim. Nunc nec dapibus odio.</p>
 
