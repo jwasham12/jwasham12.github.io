@@ -73,95 +73,85 @@
             <br>
 
             <header>
-              <h2>Importing the Data</h2>
+              <h2>Obtaining the Data</h2>
             </header>
-            <img src="images/blog/blog1/data-table.png" alt="blog-post-1">
-            <p>This is the portion of data I obtain from Kaggle using the code. The Ames housing data contained 2050 rows and 81 columns. There were 39 numeric columns which contained information such as the year of the house built, garage area and pool area. Rest of 42 columns were categorical columns which contained information such as neighborhood, house style, and garage quality. From the picture above, the first issue of the data was the missing value in columns such as alley. The data also needs to convert the categorical columns into numeric in order to use the features in the regression.</p>
+            <img src="images/blog/blog2/api.png" alt="blog-post-2">
+            <p>There were two approaches to obtain the data. The first option was to use web scraping method which is a technique employed to extract large amounts of data from the website. The other option was to use Reddit's application programming interface (API) which is a set of tools to request necessary data from the database. I chose the API method because web scraping is slower than API call and difficult to analyze. So, in order to use API, I had to obtain the API keys from <a href="https://www.reddit.com/login?dest=https%3A%2F%2Fwww.reddit.com%2Fprefs%2Fapps%2F">Reddit Developed Application</a>. In addition, I used the Python package called <a href="https://praw.readthedocs.io/en/latest/">PRAW</a> (Python Reddit API Wrapper) built by Bryce Boe to obtain the clean title, text and label for each subreddit posts.</p>
             <br>
 
             <header>
               <h2>Missing Data</h2>
             </header>
-            <p style="text-align:center;"><img src="images/blog/blog1/missing-value.png" alt="blog-post-1" width="600" height="400"></p>
-            <p>The first issue with the data is the missing values. The graph above shows the of the number of missing value in each column. When we look deeper into the columns with missing values, we can see that those values are not actually missing, but just cannot be measured or not applicable to be measured. For example, over 2000 missing values in the pool quality column can be replaced with NA (not applicable) if the corresponding pool area column show value of zero. This means that there is no pool in the house, so measuring the pool quality is not applicable. After looking into all of the missing values columns, I decided to replace the missing value in numeric columns to zero and NA (not applicable) to categorical columns.</p>
+            <p style="text-align:center;"><img src="images/blog/blog2/missing.png" alt="blog-post-2" width="600" height="400"></p>
+            <p>I was able to get 980 posts from the Republican subreddit and 989 posts from the Democrat subreddit. However, there were many posts with missing text. Only 9.6% of republican posts had text and 7.3% of democrat posts with text. Without text, there is nothing to analyze and use natural language process. So, one of the solutions was to make a new variable which combines the title and the text.</p>
             <br>
 
             <header>
               <h2>Data Cleaning</h2>
             </header>
-            <p style="text-align:center;"><img src="images/blog/blog1/clean.png" alt="blog-post-1" width="600" height="400"></p>
-            <p>Since we wanted to use regression to predict the sale price of the house, the categorical columns need to be changed to numbers. One of the ways to change the values into numbers is to identify ordinal data. Ordinal data is a categorical data type where there is a clear ordering of the values. For example, basement quality is ordinal data which each category can be represented with numbers: Excellent (5), Good (4), Typical (3), Fair (2), Poor (1) and None (0). There are 19 ordinal data columns and 2 binary data columns. Binary columns such as central air conditioning can be represented as yes (1) or no (0).</p>
+            <p style="text-align:center;"><img src="images/blog/blog2/clean.png" alt="blog-post-2" width="600" height="400"></p>
+            <p>Even though the use of PRAW package helped to obtain clean data, there were some problems to clean before using natural language process. The problem in the title or text was the URL links and numbers. Since the model should analyze words, the title and text should not have any numbers, URL links, and punctuation. So, I used regex to remove all of the unnecessary items. In addition, the labels are changed to numbers (Democrat: 0, Republican: 1).</p>
             <br>
 
             <header>
-              <h2>Sale Price (Target Variable)</h2>
+              <h2>Natural Language Process</h2>
             </header>
-            <p style="text-align:center;"><img src="images/blog/blog1/target.png" alt="blog-post-1"></p>
-            <p>Analysis of the target variable (sale price) is a crucial step before building a model since any type of skewness will have a negative effect on the predictions. The graph above shows the distribution of the target variable where the shape of the distribution is skewed. The distribution is skewed to the left where median (green line) is less than the mean (red line). In order to fix this skewed distribution, log transformation is applied to the target variable.</p>
-
-            <p style="text-align:center;"><img src="images/blog/blog1/log-target-var.png" alt="blog-post-1"></p>
-            <p>After the log transformation, we can see that the median (green line) shifted toward the mean (red line). This means that the distribution is now less skewed and closer to be normally distributed. Therefore, this transformation will reduce the negative effect on the predictions.</p>
+            <img src="images/blog/blog2/nlp.png" alt="blog-post-2">
+            <p>Natural Language Process is a method to convert words into numbers in order to process and analyze large amounts of natural language data. I used Countvectorizer and TF-IDF methods which are simple and basic methods in natural language process. Countvectorizer provides a simple way to both tokenize a collection of text documents and build a vocabulary of known words. TF-IDF (term frequency-inverse document frequency) provides statistics that is intended to reflect how important a word is to a document in a collection. The graph above shows the most popular words for both methods.</p>
             <br>
 
             <header>
-              <h2>Correlation</h2>
+              <h2>Selecting Model</h2>
             </header>
-            <p style="text-align:center;"><img src="images/blog/blog1/corr.png" alt="blog-post-1" width="600" height="400"></p>
-            <p>Another crucial step before modeling is to check the multicollinearity. Multicollinearity is a phenomenon in which one feature (predictor) can be linearly predicted from the other features. This can make the model unstable and difficult to interpret. The graph above shows some of the features with high correlation such as garage area and garage cars. These are the features that showed a high correlation:
-              <ul>
-                <li>Total Bsmt SF and 1st Flr SF</li>
-                <li>Pool Area and Pool QC</li>
-                <li>Fireplace and Fireplace Qu</li>
-                <li>Garage Yr Blt and Garage Qual</li>
-                <li>Garage Area and Garage Cars</li>
-                <li>Garage Qual and Garage Cond</li>
-              </ul>
+            <img src="images/blog/blog2/model.png" alt="blog-post-2">
+            <p>The three machine learning methods I chose were Logistic Regression, Naive Bayes and Radom Forest. Logistic regression was the most basic classification method and has interpretability. Naive Bayes is known to work well with the natural language process. Random Forest is one of the top ensemble learning methods that is known to produce high accuracy. The graph shows all three model for both Countvectorizer and TF-IDF performs about the same, but train/test accuracy of the Logistic regression and Random Forest classifier are similar which means that the model generalizes well to unseen data. </p>
+            <br>
 
-            In order to avoid multicollinearity, some of the features listed above are removed:
+            <header>
+              <h2>Tuning the Models</h2>
+            </header>
+            <img src="images/blog/blog2/random.png" alt="blog-post-2">
+            <p>I decided to pick the Logistic regression and Random Forest classifier models to tune for higher accuracy. For Random Forest with TF-IDF vectorizer, I used grid search on different parameters like max features, ngram range, min df and max depth. The best parameters were
               <ul>
-                <li>Fireplace Qu</li>
-                <li>Garage Cond</li>
-                <li>Garage Cars</li>
-                <li>Pool QC</li>
+                <li>max feature: 456</li>
+                <li>ngram range: (1,2)</li>
+                <li>min df: 2</li>
+                <li>max depth: 11</li>
               </ul>
             </p>
-            <br>
 
-            <header>
-              <h2>Selecting Features (Regularization)</h2>
-            </header>
-            <p style="text-align:center;"><img src="images/blog/blog1/select.png" alt="blog-post-1" width="600" height="400"></p>
-            <p>Since the data have so many features, we want to remove features that do not help to predict the sale price of the house. Instead of checking each column and the correlation to the sale price, the Lasso regularization method should be used. Lasso (least absolute shrinkage and selection operator) is a regression analysis method that helps to reduce features. The graph above shows the difference between true house price and predicted house price (error) of the test model versus the number of the features. The optimal number of features is 75 with error of $43115.79.</p>
-
-            <p style="text-align:center;"><img src="images/blog/blog1/result.png" alt="blog-post-1" width="600" height="400"></p>
-            <p>Another method similar to Lasso regularization is the Elastic Net regularization is a regression method that linearly combines the lasso and ridge methods. The method with the lowest error was the Elastic Net method with 53 features.</p>
+            <img src="images/blog/blog2/log.png" alt="blog-post-2">
+            <p>For Logistic regression with TF-IDF vectorizer, I used grid search on parameters like max features, ngram range, min df and C (inverse of regularization strength). The best parameters were
+              <ul>
+                <li>max feature: 244</li>
+                <li>ngram range: (1,2)</li>
+                <li>min df: 3</li>
+                <li>C : 1</li>
+                <li>penalty : L1</li>
+              </ul>
+            </p>
             <br>
 
             <header>
               <h2>Final Model</h2>
             </header>
-            <p style="text-align:center;"><img src="images/blog/blog1/table.png" alt="blog-post-1"></p>
-            <p>The best model to predict the sale price of the house in Ames, Iowa is the Elastic net model with 53 features such as the total area of the house, overall quality, and neighborhoods.</p>
+            <p style="text-align:center;"><img src="images/blog/blog2/final.png" alt="blog-post-2" width="600" height="400"></p>
+            <p>The impact of predicting the Republican post as Democrat post (True Negative) or vice versa (False positive) are the same. So, the model with high accuracy regardless of true negative and false positive misclassification is the best model in this case. Therefore, the model that is closest to the top left corner of this plot (best accuracy) is the Logistic regression model.</p>
 
-            <p> Features that help the sale price to increase (positive coefficient)
-              <ul>
-                <li>Gr Liv Area: above ground living area in square feet</li>
-                <li>Total Area: area of basement, 1st floor and 2nd floor in square feet</li>
-                <li>Neighborhood Crawfor: Crawford neighborhood in Ames, Iowa</li>
-                <li>Exterior 1st_BrkFace: Brick Face exterior covering on house</li>
-              </ul>
-            </p>
+            <img src="images/blog/blog2/interpret.png" alt="blog-post-2">
+            <p>With Logistic regression, I can analyze the coefficients of the model and investigate which words have a positive or negative influence. In this case, positive coefficients help to predict Republican post and negative coefficients help to predict Democrat posts.</p>
+            <br>
 
-            <p> Features that help the sale price to decrease (negative coefficient)
-              <ul>
-                <li>Roof Matl_ClyTile: Clay or tile roof material</li>
-                <li>Functional_Sal: Home functionality rating (salvage only)</li>
-                <li>Functional_Sev: Home functionality rating (severely damaged)</li>
-                <li>Neighborhood_Edwards: Edwards neighborhood in Ames, Iowa</li>
-              </ul>
-            </p>
+            <header>
+              <h2>Further Research</h2>
+            </header>
+            <img src="images/blog/blog2/misclass.png" alt="blog-post-2">
+            <p>Looking into some misclassified posts, there were some posts that could come from both side of subreddit. Just looking at the example above, it is almost impossible to figure out which side of the subreddit the post is from.</p>
 
-            <p>For more detail analysis and code, Check out my <a href="https://github.com/jwasham12/Ames-Iowa-Housing-Prediction">Github</a></p>
+            <img src="images/blog/blog2/useless.png" alt="blog-post-2">
+            <p>In addition, there were posts that just did not contain enough information to classify. </p>
+
+            <p>In conclusion, I was able to obtain the data from Reddit and use natural language process in order to build a classification model. The best model was the Logistic regression model that produced train accuracy of 0.767 and test accuracy of 0.748. For more detail analysis and code, Check out my <a href="https://github.com/jwasham12/Subreddit-Classification">Github</a></p>
             <br>
 
             <div class="post-info">
