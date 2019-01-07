@@ -113,17 +113,19 @@
             <img src="images/blog/blog2/random.png" alt="blog-post-2">
             <p>I decided to pick the Logistic regression and Random Forest classifier models to tune for higher accuracy. For Random Forest with TF-IDF vectorizer, I used grid search on different parameters like max features, ngram range, min df and max depth. The best parameters were
               <ul>
-                <li>max feature: 456</li>
+                <li>max feature: 459</li>
                 <li>ngram range: (1,2)</li>
                 <li>min df: 2</li>
                 <li>max depth: 11</li>
               </ul>
             </p>
 
+            <br>
+
             <img src="images/blog/blog2/log.png" alt="blog-post-2">
             <p>For Logistic regression with TF-IDF vectorizer, I used grid search on parameters like max features, ngram range, min df and C (inverse of regularization strength). The best parameters were
               <ul>
-                <li>max feature: 244</li>
+                <li>max feature: 248</li>
                 <li>ngram range: (1,2)</li>
                 <li>min df: 3</li>
                 <li>C : 1</li>
@@ -137,6 +139,8 @@
             </header>
             <p style="text-align:center;"><img src="images/blog/blog2/final.png" alt="blog-post-2" width="600" height="400"></p>
             <p>The impact of predicting the Republican post as Democrat post (True Negative) or vice versa (False positive) are the same. So, the model with high accuracy regardless of true negative and false positive misclassification is the best model in this case. Therefore, the model that is closest to the top left corner of this plot (best accuracy) is the Logistic regression model.</p>
+
+            <br>
 
             <img src="images/blog/blog2/interpret.png" alt="blog-post-2">
             <p>With Logistic regression, I can analyze the coefficients of the model and investigate which words have a positive or negative influence. In this case, positive coefficients help to predict Republican post and negative coefficients help to predict Democrat posts.</p>
