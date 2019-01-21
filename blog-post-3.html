@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Jason Washam Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Sunshine - Responsive vCard Template" />
+    <meta name="keywords" content="vcard, resposnive, retina, resume, jquery, css3, bootstrap, Sunshine, portfolio" />
+    <meta name="author" content="lmtheme" />
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/transition-animations.css">
+    <link rel="stylesheet" href="css/owl.carousel.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/main.css" type="text/css">
+
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <script src="js/modernizr.custom.js"></script>
+  </head>
+
+  <body>
+    <!-- Loading animation -->
+    <div class="preloader">
+      <div class="preloader-animation">
+        <div class="dot1"></div>
+        <div class="dot2"></div>
+      </div>
+    </div>
+    <!-- /Loading animation -->
+
+    <!-- Single Post page -->
+    <div id="page" class="page blog-post-page">
+      <!-- Header -->
+      <header id="site_header" class="header">
+        <div class="my-photo">
+          <img src="images/bio.jpg" alt="image">
+          <div class="mask"></div>
+        </div>
+
+        <div class="site-title-block">
+          <h1 class="site-title">Jason Washam</h1>
+          <p class="site-description">Data Scienctist</p>
+        </div>
+      </header>
+      <!-- /Header -->
+
+      <div id="main" class="site-main">
+        <div class="page-wrapper">
+          <a class="blog-back-button" href="index.html#blog"><i class="fa fa-angle-left"></i></a>
+
+          <div class="blog-post-main-image">
+            <img class="post-image img-responsive" src="images/blog/blog3/digit-errors.png" alt="blog-post-3" />
+          </div>
+
+          <div class="blog-post-content">
+            <h1>Classifying Digit Images</h1>
+            <ul class="tags">
+                <li><a>Kaggle</a></li>
+                <li><a>Python</a></li>
+                <li><a>Principal Component Analysis (PCA)</a></li>
+                <li><a>Support Vector Machine (SVM)</a></li>
+                <li><a>Amazon Web Services EC2 (AWS)</a></li>
+                <li><a>Grid Search</a></li>
+            </ul>
+            <header>
+              <h2>Introduction</h2>
+            </header>
+            <p>Image processing is a method to perform some operations on an image, in order to get an enhanced image or to extract some useful information from it. In machine learning, the images are converted into pixels in order to extract common characteristics of pixels to classify the similar image. The dataset from Kaggle contained the pixel values of the 42000 digit images and the correct labels. The goal of this project is to correctly identify digits from a dataset of tens of thousands of handwritten images using data science techniques and computer vision fundamentals.</p>
+            <br>
+
+            <header>
+              <h2>Obtaining the Data</h2>
+            </header>
+            <img src="images/blog/blog3/data.png" alt="blog-post-3">
+            <p>This classic dataset of handwritten images was released in 1999 by Modified National Institute of Standards and Technology (MNIST) in order to let the public learn computer vision fundamentals and benchmark classification algorithms. In this Kaggle competition, the goal is to correctly identify digits from a dataset of tens of thousands of handwritten images using different machine learning algorithms and compete with the best performing models.</p>
+            <br>
+
+            <header>
+              <h2>Exploring the Data</h2>
+            </header>
+            <p style="text-align:center;"><img src="images/blog/blog3/digit-image.png" alt="blog-post-3" width="350" height="150"></p>
+            <p>The dataset has 42000 rows and 785 columns including the true labels. Each image is 28 pixels in height and 28 pixels in width, for a total of 784 pixels in total. The image above shows the different handwritten images of each digit.</p>
+            <br>
+
+            <header>
+              <h2>Grayscale vs Binary</h2>
+            </header>
+            <img src="images/blog/blog3/types.png" alt="blog-post-3">
+            <p>Images are composed of pixels and it can be represented multiple ways such as grayscale and binary. Binary Image, also known as bi-level or two level image, represent every pixel value either 0 or 1 (black or white). Grayscale images represent every pixel by 8 bits where the pixel can have any value between 0 to 255 (shade of gray varying between black and white). There are advantages and disadvantages of using two different types of image. A grayscale image can be more computationally expensive, but it might produce better accuracy. On the other hand, a binary image is computationally less expensive than grayscale, but it might produce less accurate accuracy.</p>
+            <br>
+
+            <header>
+              <h2>Principal Component Analysis</h2>
+            </header>
+            <img src="images/blog/blog3/pca.png" alt="blog-post-3">
+            <p>Principal Component Analysis (PCA) is a statistical method of reducing the dimension using orthogonal transformation. Essentially, PCA finds the linear combination of current pixels and creates new principal components that explain the maximum possible amount of variance in the pixels. After applying the PCA method to the columns of pixels, the result showed that 222 components can keep the 90% of the information.</p>
+            <br>
+
+            <header>
+              <h2>Compare Score and Time</h2>
+            </header>
+            <img src="images/blog/blog3/performance.png" alt="blog-post-3">
+            <p>Using support vector classifier, I fitted models with four different data: Grayscale, Grayscale with PCA, Binary and Binary with PCA. The worst model was the grayscale model producing 0.12 test accuracy. The other three models performed about the same producing 0.94 to 0.99 train accuracy and 0.93 to 0.95 test accuracy.</p>
+            <br>
+
+            <img src="images/blog/blog3/time.png" alt="blog-post-3">
+            <p>Since the three models (Grayscale with PCA, Binary and Binary with PCA) have a similar train and test scores, I decided to look at the time consumed to fit the models. The graph above shows the time consumed to fit support vector classifier model. The PCA models tend to be faster in fitted time which is one of the advantages of using PCA. The grayscale with PCA took 156 seconds and binary with PCA took 155 seconds. After comparing both train/test scores and fitting time, the best model was the support vector classifier using binary images with PCA processing.</p>
+
+            <header>
+              <h2>Tuning the Models</h2>
+            </header>
+            <img src="images/blog/blog3/tune.png" alt="blog-post-3">
+            <p>A support vector classifier uses the algorithm to find a margin that best separates the groups by creating another dimension to separate the data points. The distance of how far the additional dimension is created is the gamma parameter. Trying different gamma (distance) might help to increase the accuracy of the model. So, I used a grid search to search the best gamma parameter and cross-validate the model. The grid search result shows that the Support Vector Classifier model with the gamma of 0.001 performed the best.</p>
+            <br>
+
+            <header>
+              <h2>Conclusion</h2>
+            </header>
+            <p style="text-align:center;"><img src="images/blog/blog3/final.png" alt="blog-post-3" width="600" height="400"></p>
+            <p>In conclusion, I was able to obtain the data from Kaggle and use preprocessing methods such as Standard Scaler and Principal Component Analysis in order to build the best performing classification model. The best model was the support vector classifier model that produced train accuracy of 0.974 and test accuracy of 0.956. The best parameters were
+              <ul>
+                <li>Standard Scaler (Scale)</li>
+                <li>Principal Component Analysis (222 components)</li>
+                <li>Support Vector Classifier (C = 1, gamma = 0.001)</li>
+              </ul>
+            </p>
+
+            <p>For more detail analysis and code, Check out my <a href="https://github.com/jwasham12/Subreddit-Classification">Github</a></p>
+            <br>
+
+            <div class="post-info">
+              <span class="autor"><i class="fa fa-fw fa-user"></i> Jason Washam</span>
+              <span class="divider">|</span>
+              <span class="date"><i class="fa fa-fw fa-clock-o"></i> 10 December, 2018</span>
+              <!-- Share Buttons -->
+              <div class="btn-group share-buttons pull-right hidden-xs">
+                <a href="https://jwasham94@gmail.com" target="_blank" class="btn"><i class="fa fa-envelope-square"></i> </a>
+                <a href="https://github.com/jwasham12"  target="_blank" class="btn"><i class="fa fa-github"></i> </a>
+                <a href="https://linkedin.com/in/jason-washam" target="_blank" class="btn"><i class="fa fa-linkedin"></i> </a>
+              </div>
+              <!-- /Share Buttons -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- /Single Post page -->
+
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/page-transition.js"></script>
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <script src="js/validator.js"></script>
+    <script src="js/jquery.shuffle.min.js"></script>
+    <script src="js/masonry.pkgd.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/jquery.hoverdir.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
