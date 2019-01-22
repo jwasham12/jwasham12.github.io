@@ -90,24 +90,21 @@
               <h2>Principal Component Analysis</h2>
             </header>
             <p style="text-align:center;"><img src="images/blog/blog3/pca.png" alt="blog-post-3"></p>
-            <p>Principal Component Analysis (PCA) is a statistical method of reducing the dimension using orthogonal transformation. Essentially, PCA finds the linear combination of current pixels and creates new principal components that explain the maximum possible amount of variance in the pixels. After applying the PCA method to the columns of pixels, the result showed that 222 components can keep the 90% of the information.</p>
+            <p>Principal Component Analysis (PCA) is a statistical method of reducing the dimension using orthogonal transformation. Essentially, PCA finds the linear combination of current pixels and creates new principal components that explain the maximum possible amount of variance in the pixels. This method has a number of advantages: increases computational efficiency when fitting models, help with addressing a multicollinearity problem and makes visualization simpler (or feasible). Since the dataset contains over 40000 rows with 784 columns, PCA will help to increase computational efficiency by feature elimination. After applying the PCA method to the columns of pixels, the result showed that 222 components can keep the 90% of the information. Therefore, the model will only use 222 components instead of all 784 columns.</p>
             <br>
 
             <header>
               <h2>Compare Score and Time</h2>
             </header>
-            <p style="text-align:center;"><img src="images/blog/blog3/performance.png" alt="blog-post-3" width="350" height="150"></p>
-            <p>Using support vector classifier, I fitted models with four different data: Grayscale, Grayscale with PCA, Binary and Binary with PCA. The worst model was the grayscale model producing 0.12 test accuracy. The other three models performed about the same producing 0.94 to 0.99 train accuracy and 0.93 to 0.95 test accuracy.</p>
+            <p style="text-align:center;"><img src="images/blog/blog3/score-time.png" alt="blog-post-3"></p>
+            <p>Using support vector classifier, I fitted models with four different data: Grayscale, Grayscale with PCA, Binary and Binary with PCA. The worst model was the grayscale model producing 0.12 test accuracy. The other three models performed about the same producing 0.94 to 0.99 train accuracy and 0.93 to 0.95 test accuracy. Since the three models (Grayscale with PCA, Binary and Binary with PCA) have a similar train and test scores, I decided to look at the time consumed to fit the models. The graph above shows the time consumed to fit support vector classifier model. The PCA models tend to be faster in fitted time which is one of the advantages of using PCA. The grayscale with PCA took 156 seconds and binary with PCA took 155 seconds. After comparing both train/test scores and fitting time, the best model was the support vector classifier using binary images with PCA processing.</p>
             <br>
-
-            <p style="text-align:center;"><img src="images/blog/blog3/time.png" alt="blog-post-3" width="350" height="150"></p>
-            <p>Since the three models (Grayscale with PCA, Binary and Binary with PCA) have a similar train and test scores, I decided to look at the time consumed to fit the models. The graph above shows the time consumed to fit support vector classifier model. The PCA models tend to be faster in fitted time which is one of the advantages of using PCA. The grayscale with PCA took 156 seconds and binary with PCA took 155 seconds. After comparing both train/test scores and fitting time, the best model was the support vector classifier using binary images with PCA processing.</p>
 
             <header>
               <h2>Tuning the Models</h2>
             </header>
             <p style="text-align:center;"><img src="images/blog/blog3/tune.png" alt="blog-post-3"></p>
-            <p>A support vector classifier uses the algorithm to find a margin that best separates the groups by creating another dimension to separate the data points. The distance of how far the additional dimension is created is the gamma parameter. Trying different gamma (distance) might help to increase the accuracy of the model. So, I used a grid search to search the best gamma parameter and cross-validate the model. The grid search result shows that the Support Vector Classifier model with the gamma of 0.001 performed the best.</p>
+            <p>A support vector classifier uses the algorithm to find a margin that best separates the groups by creating another dimension to separate the data points. The distance of how far the additional dimension is created is the gamma parameter. Trying different gamma (distance) might help to increase the accuracy of the model. So, I used a grid search to search the best gamma parameter and cross-validate the model. However, the support vector machine algorithm is computationally expensive and it is going to take forever to fit 12 models with over 40000 rows and 222 principal components. Therefore, I decided to use Amazon Web Services (AWS) instead of my old MacBook Pro. The grid search took about 139.5 minutes and the result shows that the Support Vector Classifier model with the gamma of 0.001 performed the best.</p>
             <br>
 
             <header>
