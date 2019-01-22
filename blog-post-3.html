@@ -75,45 +75,38 @@
             <header>
               <h2>Obtaining the Data</h2>
             </header>
-            <img src="images/blog/blog3/data.png" alt="blog-post-3">
-            <p>This classic dataset of handwritten images was released in 1999 by Modified National Institute of Standards and Technology (MNIST) in order to let the public learn computer vision fundamentals and benchmark classification algorithms. In this Kaggle competition, the goal is to correctly identify digits from a dataset of tens of thousands of handwritten images using different machine learning algorithms and compete with the best performing models.</p>
-            <br>
-
-            <header>
-              <h2>Exploring the Data</h2>
-            </header>
-            <p style="text-align:center;"><img src="images/blog/blog3/digit-image.png" alt="blog-post-3" width="350" height="150"></p>
-            <p>The dataset has 42000 rows and 785 columns including the true labels. Each image is 28 pixels in height and 28 pixels in width, for a total of 784 pixels in total. The image above shows the different handwritten images of each digit.</p>
+            <p style="text-align:center;"><img src="images/blog/blog3/data.png" alt="blog-post-3" width="350" height="150"></p>
+            <p>This classic dataset of handwritten images was released in 1999 by Modified National Institute of Standards and Technology (MNIST) in order to let the public learn computer vision fundamentals and benchmark classification algorithms. In this Kaggle competition, the goal is to correctly identify digits from a dataset of tens of thousands of handwritten images using different machine learning algorithms and compete with the best performing models. The dataset has 42000 rows and 785 columns including the true labels. Each image is 28 pixels in height and 28 pixels in width, for a total of 784 pixels in total. The image above shows the different handwritten images of each digit.</p>
             <br>
 
             <header>
               <h2>Grayscale vs Binary</h2>
             </header>
-            <img src="images/blog/blog3/types.png" alt="blog-post-3">
+            <p style="text-align:center;"><img src="images/blog/blog3/types.png" alt="blog-post-3" width="350" height="150"></p>
             <p>Images are composed of pixels and it can be represented multiple ways such as grayscale and binary. Binary Image, also known as bi-level or two level image, represent every pixel value either 0 or 1 (black or white). Grayscale images represent every pixel by 8 bits where the pixel can have any value between 0 to 255 (shade of gray varying between black and white). There are advantages and disadvantages of using two different types of image. A grayscale image can be more computationally expensive, but it might produce better accuracy. On the other hand, a binary image is computationally less expensive than grayscale, but it might produce less accurate accuracy.</p>
             <br>
 
             <header>
               <h2>Principal Component Analysis</h2>
             </header>
-            <img src="images/blog/blog3/pca.png" alt="blog-post-3">
+            <p style="text-align:center;"><img src="images/blog/blog3/pca.png" alt="blog-post-3" width="350" height="150"></p>
             <p>Principal Component Analysis (PCA) is a statistical method of reducing the dimension using orthogonal transformation. Essentially, PCA finds the linear combination of current pixels and creates new principal components that explain the maximum possible amount of variance in the pixels. After applying the PCA method to the columns of pixels, the result showed that 222 components can keep the 90% of the information.</p>
             <br>
 
             <header>
               <h2>Compare Score and Time</h2>
             </header>
-            <img src="images/blog/blog3/performance.png" alt="blog-post-3">
+            <p style="text-align:center;"><img src="images/blog/blog3/performance.png" alt="blog-post-3" width="350" height="150"></p>
             <p>Using support vector classifier, I fitted models with four different data: Grayscale, Grayscale with PCA, Binary and Binary with PCA. The worst model was the grayscale model producing 0.12 test accuracy. The other three models performed about the same producing 0.94 to 0.99 train accuracy and 0.93 to 0.95 test accuracy.</p>
             <br>
 
-            <img src="images/blog/blog3/time.png" alt="blog-post-3">
+            <p style="text-align:center;"><img src="images/blog/blog3/time.png" alt="blog-post-3" width="350" height="150"></p>
             <p>Since the three models (Grayscale with PCA, Binary and Binary with PCA) have a similar train and test scores, I decided to look at the time consumed to fit the models. The graph above shows the time consumed to fit support vector classifier model. The PCA models tend to be faster in fitted time which is one of the advantages of using PCA. The grayscale with PCA took 156 seconds and binary with PCA took 155 seconds. After comparing both train/test scores and fitting time, the best model was the support vector classifier using binary images with PCA processing.</p>
 
             <header>
               <h2>Tuning the Models</h2>
             </header>
-            <img src="images/blog/blog3/tune.png" alt="blog-post-3">
+            <p style="text-align:center;"><img src="images/blog/blog3/tune.png" alt="blog-post-3" width="350" height="150"></p>
             <p>A support vector classifier uses the algorithm to find a margin that best separates the groups by creating another dimension to separate the data points. The distance of how far the additional dimension is created is the gamma parameter. Trying different gamma (distance) might help to increase the accuracy of the model. So, I used a grid search to search the best gamma parameter and cross-validate the model. The grid search result shows that the Support Vector Classifier model with the gamma of 0.001 performed the best.</p>
             <br>
 
